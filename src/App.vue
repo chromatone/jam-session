@@ -1,8 +1,14 @@
 <template>
+  <header>
+    <transport />
+  </header>
   <main>
-    <bpm-num />
+    <bpm />
     <metronome />
   </main>
+  <article>
+    <notes />
+  </article>
 </template>
 
 <script>
@@ -12,8 +18,11 @@ export default {
 </script>
 
 <style scoped>
-main {
+main,
+header,
+article {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 </style>

@@ -3,45 +3,56 @@
     <div class="sig">
       <div class="sign">
         <editable-number
-          :num="sig.over"
+          :num="over"
           :min="1"
           :max="32"
-          @update="sig.over = Number($event)"
+          @update="over = Number($event)"
         />
       </div>
       <div class="sign">
         <editable-number
-          :num="sig.under"
+          :num="under"
           :min="1"
           :max="32"
-          @update="sig.under = Number($event)"
+          @update="under = Number($event)"
         />
       </div>
       <div>{{ num }}</div>
     </div>
-    <div class="cycle">num</div>
+    <div class="cycle">
+      <div :class="{ active: b == current }" v-for="b in over" :key="b">
+        {{ b }}
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import { Transport } from "tone";
-import { reactive, computed } from "vue";
+import { Transport, Loop, Draw } from "tone";
+import { computed, ref } from "vue";
 export default {
   setup() {
-    Transport.loop = true;
-    Transport.loopEnd = "1m";
-    const sig = reactive({
-      over: 4,
-      under: 4,
-    });
+    const over = ref(4);
+    const under = ref(4);
+    const current = ref(0);
     const num = computed(() => {
-      let sign = (sig.over / sig.under).toFixed(1);
-      Transport.timeSignature = sign;
-      return sign;
+      Transport.timeSignature = [over.value, under.value];
+      return (over.value / (under.value / 4)).toFixed(2);
     });
+    const loop = new Loop((time) => {
+      Draw.schedule(() => {
+        current.value++;
+        if (current.value > over.value) {
+          current.value = 1;
+        }
+      }, time);
+    }, "4n").start(0);
+
     return {
-      sig,
+      over,
+      under,
       num,
+      current,
     };
   },
 };
@@ -50,6 +61,26 @@ export default {
 <style scoped>
 section {
   display: flex;
+}
+.cycle {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 1.2em;
+  justify-content: space-evenly;
+  align-items: stretch;
+  width: 100%;
+}
+.cycle > div {
+  flex: 1 1 40px;
+  transition: all 100ms ease-out;
+  display: flex;
+  flex: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.active {
+  background-color: var(--accent);
+  transition: all 500ms ease-in;
 }
 .sig {
   min-width: 60px;

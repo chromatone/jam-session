@@ -7,6 +7,7 @@
   --pad: 2em;
   --button-pad: 0.5em;
   --radius: 0;
+  --accent: #f80;
 }
 
 body {
@@ -22,7 +23,7 @@ body {
   margin: 0;
 }
 
-#app main section {
+#app section {
   border: 1px solid var(--border-color);
   margin: 4px;
   border-radius: var(--radius);
