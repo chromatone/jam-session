@@ -1,0 +1,31 @@
+:root {
+  --back: #333;
+  --text: #eee;
+  --border: #eee;
+  --pad: 2em;
+  --button-pad: 0.5em;
+}
+
+body {
+  background-color: var(--back);
+}
+
+#app {
+  font-family: 'Work Sans', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: var(--text);
+  margin: 0;
+}
+
+#app main section {
+  border: 1px solid var(--border);
+  margin: 1em;
+  border-radius: 8px;
+}
+
+button {
+  padding: var(--button-pad);
+  font-size: 1em;
+}
