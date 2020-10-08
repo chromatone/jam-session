@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "fitty": "^2.3.2",
     "svgjs": "^2.6.2",
     "tone": "^14.7.61",
     "vue": "^3.0.0-rc.1",
@@ -13,7 +14,6 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.1",
-    "ngrok": "^3.3.0",
     "vite": "^1.0.0-rc.1"
   }
 }

@@ -1,9 +1,12 @@
 :root {
+  --back-dark: #111;
   --back: #333;
+  --back-light: #777;
   --text: #eee;
-  --border: #eee;
+  --border-color: #eee;
   --pad: 2em;
   --button-pad: 0.5em;
+  --radius: 0;
 }
 
 body {
@@ -20,12 +23,28 @@ body {
 }
 
 #app main section {
-  border: 1px solid var(--border);
-  margin: 1em;
-  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin: 4px;
+  border-radius: var(--radius);
+  flex: 1 1;
 }
 
 button {
   padding: var(--button-pad);
   font-size: 1em;
+  outline: none;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+button:hover {
+  background-color: var(--back-light);
+}
+
+button:active {
+  background-color: var(--back-dark);
 }

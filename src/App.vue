@@ -1,6 +1,7 @@
 <template>
   <main>
     <bpm-num />
+    <metronome />
   </main>
 </template>
 

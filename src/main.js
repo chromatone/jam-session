@@ -8,4 +8,10 @@ const app = createApp(App)
 import bpmNum from './components/bpm-num.vue'
 app.component('bpm-num', bpmNum)
 
+import editableNumber from './components/editable-number.vue'
+app.component('editable-number', editableNumber)
+
+import metronome from './components/metronome.vue'
+app.component('metronome', metronome)
+
 app.mount('#app')
