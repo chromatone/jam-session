@@ -17,15 +17,13 @@
 </template>
 
 <script>
-import { state, play, pause, stop } from "../state.js";
+import { state, transport } from "../use/state.js";
 export default {
   methods: {},
   setup() {
     return {
       state,
-      play,
-      pause,
-      stop,
+      ...transport,
     };
   },
 };
@@ -36,5 +34,9 @@ section {
   display: flex;
   align-items: center;
   padding: var(--button-pad);
+}
+.title {
+  padding-right: var(--button-pad);
+  font-weight: bold;
 }
 </style>

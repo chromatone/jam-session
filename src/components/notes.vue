@@ -2,7 +2,7 @@
   <section>
     <div
       @click="setRoot(key)"
-      :style="{ backgroundColor: noteColor(key) }"
+      :style="{ backgroundColor: color(key) }"
       :class="{ active: state.root == key }"
       class="note"
       v-for="(note, key) in notes"
@@ -14,15 +14,24 @@
 </template>
 
 <script>
-import { notes, noteColor } from "../notes.js";
-import { state, setRoot } from "../state.js";
+import { notes, noteColor, piano } from "../use/notes.js";
+import { state, setRoot } from "../use/state.js";
 export default {
   setup() {
+    function color(key) {
+      if (state.root == key) {
+        return noteColor(key);
+      } else if (piano[key]) {
+        return "#444";
+      } else {
+        return "#aaa";
+      }
+    }
     return {
       notes,
       state,
       setRoot,
-      noteColor,
+      color,
     };
   },
 };
@@ -31,10 +40,12 @@ export default {
 <style scoped>
 section {
   display: flex;
+  flex: 1 1 100%;
   flex-flow: row wrap;
   justify-content: stretch;
   align-items: stretch;
   width: 100%;
+  font-weight: bold;
 }
 .note {
   background-color: #555;

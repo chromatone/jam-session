@@ -4,11 +4,12 @@
   </header>
   <main>
     <bpm />
-    <metronome />
+    <metre />
   </main>
   <article>
     <notes />
   </article>
+  <scales />
 </template>
 
 <script>

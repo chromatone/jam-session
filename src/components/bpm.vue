@@ -18,13 +18,14 @@
           {{ note }}
         </div>
       </div>
+      <div class="indicator" :class="{ blink: blink }"></div>
     </div>
   </section>
 </template>
 
 <script>
-import { setBPM } from "../state.js";
-import { Frequency } from "tone";
+import { setBPM } from "../use/state.js";
+import { Frequency, Loop } from "tone";
 export default {
   name: "bpm",
   data() {
@@ -33,6 +34,7 @@ export default {
       bpm: 100,
       playing: false,
       progress: 0,
+      blink: false,
     };
   },
   computed: {
@@ -64,12 +66,21 @@ export default {
       }
     },
   },
+  mounted() {
+    const loop = new Loop((time) => {
+      this.blink = true;
+      setTimeout(() => {
+        this.blink = false;
+      }, 60);
+    }, "4n").start(0);
+  },
 };
 </script>
 
 <style scoped>
 .bar,
-.info {
+.info,
+.adjust {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -91,5 +102,12 @@ export default {
 }
 .invert {
   color: black;
+}
+.indicator {
+  transition: all 40ms ease;
+  flex: 1 1 30px;
+}
+.blink {
+  background-color: #fff;
 }
 </style>

@@ -3,11 +3,13 @@
   --back: #333;
   --back-light: #777;
   --text: #eee;
+  --text-dark: #aaa;
   --border-color: #eee;
   --pad: 2em;
   --button-pad: 0.5em;
   --radius: 0;
-  --accent: #f80;
+  --accent: #fff;
+  --accent-text: #333;
 }
 
 body {

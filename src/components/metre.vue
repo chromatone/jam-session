@@ -3,24 +3,22 @@
     <div class="sig">
       <div class="sign">
         <editable-number
-          :num="over"
+          :num="state.metre.over"
           :min="1"
           :max="32"
-          @update="over = Number($event)"
+          @update="metre.setOver($event)"
         />
       </div>
-      <div class="sign">
-        <editable-number
-          :num="under"
-          :min="1"
-          :max="32"
-          @update="under = Number($event)"
-        />
+      <div class="sign under">
+        {{ state.metre.under }}
       </div>
-      <div>{{ num }}</div>
     </div>
     <div class="cycle">
-      <div :class="{ active: b == current }" v-for="b in over" :key="b">
+      <div
+        :class="{ active: b == over.current.value }"
+        v-for="b in state.metre.over"
+        :key="b"
+      >
         {{ b }}
       </div>
     </div>
@@ -28,31 +26,41 @@
 </template>
 
 <script>
-import { Transport, Loop, Draw } from "tone";
-import { computed, ref } from "vue";
+import { Transport, Loop, Sequence, Draw } from "tone";
+import { reactive, ref, watchEffect } from "vue";
+import { state, metre } from "../use/state.js";
 export default {
   setup() {
-    const over = ref(4);
-    const under = ref(4);
-    const current = ref(0);
-    const num = computed(() => {
-      Transport.timeSignature = [over.value, under.value];
-      return (over.value / (under.value / 4)).toFixed(2);
-    });
-    const loop = new Loop((time) => {
-      Draw.schedule(() => {
-        current.value++;
-        if (current.value > over.value) {
-          current.value = 1;
+    const over = createRow("over");
+
+    function createRow(place) {
+      let current = ref(0);
+      let steps = reactive([1, 2, 3, 4]);
+      let sequence = new Sequence(
+        (time, step) => {
+          Draw.schedule(() => {
+            current.value = step;
+          }, time);
+        },
+        [1, 2, 3, 4],
+        "4n"
+      ).start(0);
+      watchEffect(() => {
+        steps.length = 0;
+        for (let i = 1; i <= state.metre[place]; i++) {
+          steps.push(i);
         }
-      }, time);
-    }, "4n").start(0);
+        sequence.events = steps;
+      });
+      return {
+        current,
+      };
+    }
 
     return {
+      state,
+      metre,
       over,
-      under,
-      num,
-      current,
     };
   },
 };
@@ -80,6 +88,7 @@ section {
 }
 .active {
   background-color: var(--accent);
+  color: var(--accent-text);
   transition: all 500ms ease-in;
 }
 .sig {
@@ -99,5 +108,8 @@ section {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border-color);
+}
+.under {
+  color: var(--text-dark);
 }
 </style>
