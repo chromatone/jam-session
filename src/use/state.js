@@ -9,6 +9,7 @@ const st = reactive({
   started: false,
   playing: false,
   root: 0,
+  loud: true,
   progress: 0,
   position: 0,
   metre: {
@@ -27,6 +28,10 @@ export function setBPM(bpm) {
 
 export function setScale(scale) {
   st.scale = scale
+}
+
+export function toggleLoud() {
+  st.loud = !st.loud
 }
 
 export const metre = {

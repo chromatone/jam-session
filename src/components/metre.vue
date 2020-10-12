@@ -26,18 +26,33 @@
 </template>
 
 <script>
-import { Transport, Loop, Sequence, Draw } from "tone";
+import { Transport, PluckSynth, Sequence, Draw } from "tone";
 import { reactive, ref, watchEffect } from "vue";
 import { state, metre } from "../use/state.js";
+import { notes } from "../use/notes.js";
 export default {
   setup() {
     const over = createRow("over");
+    const synth = new PluckSynth().toDestination();
 
     function createRow(place) {
       let current = ref(0);
       let steps = reactive([1, 2, 3, 4]);
       let sequence = new Sequence(
         (time, step) => {
+          if (state.loud) {
+            if (step == 1) {
+              synth.resonance = 0.96;
+              synth.triggerAttackRelease(notes[state.root] + "4", "16n", time);
+            } else {
+              synth.resonance = 0.9;
+              synth.triggerAttackRelease(
+                notes[(state.root + 7) % 12] + "4",
+                "16n",
+                time
+              );
+            }
+          }
           Draw.schedule(() => {
             current.value = step;
           }, time);

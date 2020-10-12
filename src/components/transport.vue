@@ -11,18 +11,27 @@
       <button @click="play()">
         <i class="fa fa-play" aria-hidden="true"></i>
       </button>
-      {{ state.position }}
     </div>
+
+    <div class="spacer"></div>
+    <button @click="toggleLoud()">
+      <i
+        class="fa"
+        :class="{ 'fa-volume-up': state.loud, 'fa-volume-off': !state.loud }"
+        aria-hidden="true"
+      ></i>
+    </button>
   </section>
 </template>
 
 <script>
-import { state, transport } from "../use/state.js";
+import { state, transport, toggleLoud } from "../use/state.js";
 export default {
   methods: {},
   setup() {
     return {
       state,
+      toggleLoud,
       ...transport,
     };
   },
@@ -33,6 +42,7 @@ export default {
 section {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: var(--button-pad);
 }
 .title {

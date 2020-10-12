@@ -18,7 +18,9 @@
           {{ note }}
         </div>
       </div>
-      <div class="indicator" :class="{ blink: blink }"></div>
+      <div class="indicator" :class="{ blink: blink }">
+        {{ state.position }}
+      </div>
     </div>
   </section>
 </template>
@@ -26,6 +28,7 @@
 <script>
 import { setBPM } from "../use/state.js";
 import { Frequency, Loop } from "tone";
+import { state } from "../use/state.js";
 export default {
   name: "bpm",
   data() {
@@ -35,6 +38,11 @@ export default {
       playing: false,
       progress: 0,
       blink: false,
+    };
+  },
+  setup() {
+    return {
+      state,
     };
   },
   computed: {
@@ -106,6 +114,9 @@ export default {
 .indicator {
   transition: all 40ms ease;
   flex: 1 1 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .blink {
   background-color: #fff;
