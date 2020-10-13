@@ -26,11 +26,13 @@
 </template>
 
 <script>
+import editableNumber from "./editable-number.vue";
 import { Transport, PluckSynth, Sequence, Draw } from "tone";
 import { reactive, ref, watchEffect } from "vue";
 import { state, metre } from "../use/state.js";
 import { notes } from "../use/notes.js";
 export default {
+  components: { editableNumber },
   setup() {
     const over = createRow("over");
     const synth = new PluckSynth().toDestination();
@@ -42,10 +44,10 @@ export default {
         (time, step) => {
           if (state.loud) {
             if (step == 1) {
-              synth.resonance = 0.96;
+              synth.resonance = 0.94;
               synth.triggerAttackRelease(notes[state.root] + "4", "16n", time);
             } else {
-              synth.resonance = 0.9;
+              synth.resonance = 0.8;
               synth.triggerAttackRelease(
                 notes[(state.root + 7) % 12] + "4",
                 "16n",
@@ -66,6 +68,11 @@ export default {
           steps.push(i);
         }
         sequence.events = steps;
+      });
+      watchEffect(() => {
+        if (!state.playing) {
+          current.value = 0;
+        }
       });
       return {
         current,
@@ -100,6 +107,7 @@ section {
   flex: row wrap;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 .active {
   background-color: var(--accent);
@@ -126,5 +134,6 @@ section {
 }
 .under {
   color: var(--text-dark);
+  pointer-events: none;
 }
 </style>

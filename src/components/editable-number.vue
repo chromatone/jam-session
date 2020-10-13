@@ -1,5 +1,6 @@
 <template>
   <div
+    class="editable"
     ref="ce"
     @click="activate()"
     :class="{ active: edit }"
@@ -74,5 +75,8 @@ export default {
 <style scoped>
 .active {
   border: 4px dotted var(--border-color);
+}
+.editable {
+  cursor: pointer;
 }
 </style>

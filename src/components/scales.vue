@@ -19,6 +19,7 @@
         :style="{ backgroundColor: color(key) }"
         :class="{ active: rootScale[key], main: key == state.root }"
         class="note"
+        @click="setRoot(key)"
         v-for="(note, key) in notes"
         :key="key"
       >
@@ -31,7 +32,7 @@
 <script>
 import { notes, noteColor, rotate, piano } from "../use/notes.js";
 import { scales } from "../use/scales.js";
-import { state, setScale } from "../use/state.js";
+import { state, setScale, setRoot } from "../use/state.js";
 import { watchEffect, ref } from "vue";
 export default {
   setup() {
@@ -53,6 +54,7 @@ export default {
     }
 
     return {
+      setRoot,
       scales,
       notes,
       state,
@@ -116,20 +118,19 @@ section,
   justify-content: center;
   align-items: center;
   height: 100px;
-
   font-size: 1em;
+  padding: 0 4px;
   filter: grayscale(100%);
   color: hsla(0, 100%, 100%, 0.1);
   transition: all 900ms ease-in-out;
 }
 .active {
-  flex: 5 1 100px;
-
-  font-size: 2em;
+  flex: 5 1 7%;
+  font-size: 1.2em;
   color: hsla(0, 100%, 100%, 1);
   filter: grayscale(0%);
 }
 .note.main {
-  box-shadow: 0 0 0px 2px inset #000;
+  box-shadow: 0 0 0px 4px inset #eee;
 }
 </style>

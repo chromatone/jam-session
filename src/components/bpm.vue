@@ -26,11 +26,15 @@
 </template>
 
 <script>
+import editableNumber from "./editable-number.vue";
 import { setBPM } from "../use/state.js";
 import { Frequency, Loop } from "tone";
 import { state } from "../use/state.js";
 export default {
   name: "bpm",
+  components: {
+    editableNumber,
+  },
   data() {
     return {
       edit: false,

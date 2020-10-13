@@ -81,5 +81,4 @@ export const transport = {
 
 export function setRoot(note) {
   st.root = note
-  console.log(note)
 }
