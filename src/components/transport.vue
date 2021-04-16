@@ -1,27 +1,17 @@
-<template>
-  <section>
-    <div class="title">JAM SESSION IN {{ notes[state.root] }}</div>
-    <div class="control">
-      <button @click="stop()">
-        <i class="fa fa-stop" aria-hidden="true"></i>
-      </button>
-      <button @click="pause()">
-        <i class="fa fa-pause" aria-hidden="true"></i>
-      </button>
-      <button @click="play()">
-        <i class="fa fa-play" aria-hidden="true"></i>
-      </button>
-      <button @click="toggleLoud()">
-        <i
-          class="fa"
-          :class="{ 'fa-volume-up': state.loud, 'fa-volume-off': !state.loud }"
-          aria-hidden="true"
-        ></i>
-      </button>
-    </div>
-
-    <div class="spacer"></div>
-  </section>
+<template lang="pug">
+section
+  .title JAM SESSION IN {{ notes[state.root] }}
+  .control
+    button(@click="stop()")
+      fa-stop
+    button(@click="pause()")
+      fa-pause
+    button(@click="play()")
+      fa-play
+    button(@click="toggleLoud()")
+      fa-volume-up(v-if="state.loud")
+      fa-volume-off(v-else)
+  .spacer
 </template>
 
 <script>

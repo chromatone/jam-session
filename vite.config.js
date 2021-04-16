@@ -1,14 +1,12 @@
 import ViteComponents from 'vite-plugin-components'
-import PurgeIcons from 'vite-plugin-purge-icons'
+import Icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import vue from '@vitejs/plugin-vue'
-
 import WindiCSS from 'vite-plugin-windicss'
 
 export default {
   server: {
     port: 3019,
   },
-
   plugins: [
     WindiCSS(),
     vue(),
@@ -26,10 +24,14 @@ export default {
       // Subdirectory paths for ignoring namespace prefixes
       // works when `directoryAsNamespace: true`
       globalNamespaces: [],
+      customComponentResolvers: [
+        ViteIconsResolver({
+          componentPrefix: '',
+        }),
+      ],
     }),
-
-    PurgeIcons({
-      /* PurgeIcons Options */
+    Icons({
+      defaultStyle: 'vertical-align: middle;',
     }),
   ],
 }
