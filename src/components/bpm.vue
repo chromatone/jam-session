@@ -1,40 +1,25 @@
-<template>
-  <section>
-    <div class="num">
-      <editable-number :num="bpm" @update="setBPM($event)"> </editable-number>
-    </div>
-    <div class="bar">
-      <div class="adjust">
-        <button @click="stepBPM(-1)">
-          <i class="fa fa-minus" aria-hidden="true"></i>
-        </button>
-        <button @click="stepBPM(1)">
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        </button>
-      </div>
-      <div class="info">
-        <div class="block">{{ hz }}Hz</div>
-        <div class="block invert" :style="{ backgroundColor: color }">
-          {{ note }}
-        </div>
-      </div>
-      <div class="indicator" :class="{ blink: blink }">
-        {{ state.position }}
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+section
+  .num.text-9xl.pb-8.font-bold.cursor-pointer.select-none
+    editable-number(:num="bpm", @update="setBPM($event)")
+  .bar
+    .adjust
+      button(@click="stepBPM(-1)")
+        fa-minus
+      button(@click="stepBPM(1)")
+        fa-plus
+    .info
+      .block {{ hz }}Hz
+      .block.invert(:style="{ backgroundColor: color }") {{ note }}
+    .indicator(:class="{ blink: blink }") {{ state.position }}
 </template>
 
 <script>
-import editableNumber from "./editable-number.vue";
 import { setBPM } from "../use/state.js";
 import { Frequency, Loop } from "tone";
 import { state } from "../use/state.js";
 export default {
   name: "bpm",
-  components: {
-    editableNumber,
-  },
   data() {
     return {
       edit: false,
@@ -93,24 +78,13 @@ export default {
 .bar,
 .info,
 .adjust {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  @apply flex justify-between items-stretch;
 }
 .bar {
-  border-top: 1px solid var(--border-color);
-}
-.num {
-  padding: 0 16px;
-  font-size: 100px;
-  font-weight: 600;
-  cursor: pointer;
-  user-select: none;
+  @apply border;
 }
 .block {
-  display: flex;
-  align-items: center;
-  padding: var(--button-pad);
+  @apply flex items-center p-4;
 }
 .invert {
   color: black;
