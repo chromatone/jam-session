@@ -6,14 +6,18 @@
     "build": "vite build"
   },
   "dependencies": {
-    "fitty": "^2.3.2",
+    "fitty": "^2.3.3",
     "svgjs": "^2.6.2",
-    "tone": "^14.7.61",
-    "vue": "^3.0.0-rc.1",
-    "webmidi": "^2.5.1"
+    "tone": "^14.8.15",
+    "vue": "^3.0.11",
+    "webmidi": "^2.5.2"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.0-rc.1",
-    "vite": "^1.0.0-rc.1"
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.11",
+    "vite": "^2.1.5",
+    "vite-plugin-components": "0.8.3",
+    "vite-plugin-purge-icons": "^0.7.0",
+    "vite-plugin-windicss": "^0.12.2"
   }
 }
