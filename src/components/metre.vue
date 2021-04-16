@@ -1,28 +1,19 @@
-<template>
-  <section>
-    <div class="sig">
-      <div class="sign">
-        <editable-number
-          :num="state.metre.over"
-          :min="1"
-          :max="32"
-          @update="metre.setOver($event)"
-        />
-      </div>
-      <div class="sign under">
-        {{ state.metre.under }}
-      </div>
-    </div>
-    <div class="cycle">
-      <div
-        :class="{ active: b == over.current.value }"
-        v-for="b in state.metre.over"
-        :key="b"
-      >
-        {{ b }}
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+section
+  .sig
+    .sign
+      editable-number(:num="state.metre.over", :min="1", :max="32", @update="metre.setOver($event)").
+
+
+    .sign.under.
+
+      {{ state.metre.under }}
+
+  .cycle
+    div(:class="{ active: b == over.current.value }", v-for="b in state.metre.over", :key="b").
+
+      {{ b }}
+      
 </template>
 
 <script>

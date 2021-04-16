@@ -1,16 +1,9 @@
-<template>
-  <section>
-    <div
-      @click="setRoot(key)"
-      :style="{ backgroundColor: color(key) }"
-      :class="{ active: state.root == key }"
-      class="note"
-      v-for="(note, key) in notes"
-      :key="key"
-    >
-      {{ note }}
-    </div>
-  </section>
+<template lang="pug">
+section
+  .note(@click="setRoot(key)", :style="{ backgroundColor: color(key) }", :class="{ active: state.root == key }", v-for="(note, key) in notes", :key="key").
+
+    {{ note }}
+    
 </template>
 
 <script>

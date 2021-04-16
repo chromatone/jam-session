@@ -1,8 +1,8 @@
 <template lang="pug">
-#full-app(:style="{ backgroundColor: noteColor(state.root, 0) }")
-  header
+#full-app.p-2(:style="{ backgroundColor: noteColor(state.root, 0) }")
+  .flex
     transport
-  main
+  .flex.flex-wrap.w-full
     bpm
     metre
   scales
@@ -25,15 +25,4 @@ export default {
 </script>
 
 <style scoped>
-#full-app {
-  transition: all 300ms ease;
-  padding: 0.5em;
-}
-main,
-header,
-article {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
 </style>

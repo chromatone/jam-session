@@ -1,32 +1,17 @@
-<template>
-  <section>
-    <div class="row">
-      <div class="main">{{ scales[state.scale].name }}</div>
-      <div class="choose">
-        <div
-          @click="setScale(scale.handle)"
-          class="scale"
-          :class="{ chosen: scale.handle == state.scale }"
-          v-for="(scale, key) in scales"
-          :key="key"
-        >
-          {{ scale.name }}
-        </div>
-      </div>
-    </div>
-    <div class="notes">
-      <div
-        :style="{ backgroundColor: color(key) }"
-        :class="{ active: rootScale[key], main: key == state.root }"
-        class="note"
-        @click="setRoot(key)"
-        v-for="(note, key) in notes"
-        :key="key"
-      >
-        {{ note }}
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+section
+  .row
+    .main {{ scales[state.scale].name }}
+    .choose
+      .scale(@click="setScale(scale.handle)", :class="{ chosen: scale.handle == state.scale }", v-for="(scale, key) in scales", :key="key").
+
+        {{ scale.name }}
+
+  .notes
+    .note(:style="{ backgroundColor: color(key) }", :class="{ active: rootScale[key], main: key == state.root }", @click="setRoot(key)", v-for="(note, key) in notes", :key="key").
+
+      {{ note }}
+      
 </template>
 
 <script>
@@ -99,7 +84,7 @@ section,
   scroll-snap-align: start;
   cursor: pointer;
   font-weight: normal;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 .scale:hover {
   opacity: 1;

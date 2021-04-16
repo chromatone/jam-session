@@ -28,10 +28,8 @@ body {
 }
 
 #app section {
+  @apply p-4 m-2 flex-1 rounded-sm;
   border: 1px solid var(--border-color);
-  margin: 4px;
-  border-radius: var(--radius);
-  flex: 1 1;
 }
 
 button {

@@ -1,5 +1,5 @@
 <template lang="pug">
-section
+section.flex.items-center.justify-center.p-4
   .title JAM SESSION IN {{ notes[state.root] }}
   .control
     button(@click="stop()")
@@ -31,12 +31,6 @@ export default {
 </script>
 
 <style scoped>
-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--button-pad);
-}
 .title {
   padding-right: var(--button-pad);
   font-weight: bold;
