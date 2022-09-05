@@ -51,7 +51,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 section,
 .notes {
   display: flex;
@@ -60,19 +60,21 @@ section,
   align-items: stretch;
   font-weight: bold;
 }
+
 .row {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
 }
+
 .row div {
-  padding: var(--button-pad);
-  display: flex;
-  align-items: center;
+  @apply flex items-center p-4;
 }
+
 .main {
   flex: 1 1 10%;
 }
+
 .choose {
   overflow: scroll;
   flex: 1 1 80%;
@@ -80,21 +82,26 @@ section,
   scroll-snap-type: x mandatory;
   font-size: 0.8em;
 }
+
 .scale {
   scroll-snap-align: start;
   cursor: pointer;
   font-weight: normal;
   opacity: 0.3;
 }
+
 .scale:hover {
   opacity: 1;
 }
+
 .scale.chosen {
   opacity: 1;
 }
+
 .notes {
   width: 100%;
 }
+
 .note {
   background-color: #555;
   cursor: pointer;
@@ -109,12 +116,14 @@ section,
   color: hsla(0, 100%, 100%, 0.1);
   transition: all 900ms ease-in-out;
 }
+
 .active {
   flex: 5 1 7%;
   font-size: 1.2em;
   color: hsla(0, 100%, 100%, 1);
   filter: grayscale(0%);
 }
+
 .note.main {
   box-shadow: 0 0 0px 4px inset #eee;
 }

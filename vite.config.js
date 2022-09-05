@@ -7,6 +7,7 @@ export default {
   server: {
     port: 3019,
   },
+  base: './',
   plugins: [
     WindiCSS(),
     vue(),

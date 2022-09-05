@@ -1,26 +1,26 @@
 {
-  "name": "jam",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "deploy": "node ftp-deploy.js"
-  },
-  "dependencies": {
-    "fitty": "^2.3.3",
-    "svgjs": "^2.6.2",
-    "tone": "^14.8.15",
-    "vue": "^3.0.11",
-    "webmidi": "^2.5.2"
-  },
-  "devDependencies": {
-    "@iconify/json": "^1.1.329",
-    "@vitejs/plugin-vue": "^1.2.1",
-    "@vue/compiler-sfc": "^3.0.11",
-    "pug": "^3.0.2",
-    "vite": "^2.1.5",
-    "vite-plugin-components": "0.8.3",
-    "vite-plugin-icons": "^0.5.0",
-    "vite-plugin-windicss": "^0.12.2"
-  }
+	"name": "jam",
+	"version": "0.0.0",
+	"scripts": {
+		"build": "vite build",
+		"deploy": "sh deploy.sh",
+		"dev": "vite"
+	},
+	"dependencies": {
+		"fitty": "^2.3.3",
+		"svgjs": "^2.6.2",
+		"tone": "^14.8.15",
+		"vue": "^3.0.11",
+		"webmidi": "^2.5.2"
+	},
+	"devDependencies": {
+		"@iconify/json": "^1.1.329",
+		"@vitejs/plugin-vue": "^1.2.1",
+		"@vue/compiler-sfc": "^3.0.11",
+		"pug": "^3.0.2",
+		"vite": "^2.1.5",
+		"vite-plugin-components": "0.8.3",
+		"vite-plugin-icons": "^0.5.0",
+		"vite-plugin-windicss": "^0.12.2"
+	}
 }
