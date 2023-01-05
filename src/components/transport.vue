@@ -3,14 +3,14 @@ section.flex.items-center.justify-center.p-4
   .title JAM SESSION IN {{ notes[state.root] }}
   .control
     button(@click="stop()")
-      fa-stop
+      .i-fa-stop
     button(@click="pause()")
-      fa-pause
+      .i-fa-pause
     button(@click="play()")
-      fa-play
+      .i-fa-play
     button(@click="toggleLoud()")
-      fa-volume-up(v-if="state.loud")
-      fa-volume-off(v-else)
+      .i-fa-volume-up(v-if="state.loud")
+      .i-fa-volume-off(v-else)
   .spacer
 </template>
 

@@ -1,0 +1,26 @@
+{
+	"name": "jam",
+	"version": "0.0.0",
+	"scripts": {
+		"build": "vite build",
+		"deploy": "sh deploy.sh",
+		"dev": "vite"
+	},
+	"dependencies": {
+		"fitty": "^2.3.6",
+		"svgjs": "^2.6.2",
+		"tone": "^14.8.49",
+		"vue": "^3.2.45",
+		"webmidi": "^3.0.25"
+	},
+	"devDependencies": {
+		"@iconify/json": "^2.2.2",
+		"@vitejs/plugin-vue": "^4.0.0",
+		"@vue/compiler-sfc": "^3.2.45",
+		"pug": "^3.0.2",
+		"vite": "^4.0.4",
+		"vite-plugin-components": "0.13.3",
+		"vite-plugin-icons": "^0.6.5",
+		"vite-plugin-windicss": "^1.8.10"
+	}
+}

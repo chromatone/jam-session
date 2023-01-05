@@ -5,9 +5,9 @@ section
   .bar
     .adjust
       button(@click="stepBPM(-1)")
-        fa-minus
+        .i-fa-minus
       button(@click="stepBPM(1)")
-        fa-plus
+        .i-fa-plus
     .info
       .block {{ hz }}Hz
       .block.invert(:style="{ backgroundColor: color }") {{ note }}
@@ -74,21 +74,25 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .bar,
 .info,
 .adjust {
   @apply flex justify-between items-stretch;
 }
+
 .bar {
   @apply border;
 }
+
 .block {
   @apply flex items-center p-4;
 }
+
 .invert {
   color: black;
 }
+
 .indicator {
   transition: all 40ms ease;
   flex: 1 1 30px;
@@ -96,6 +100,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 .blink {
   background-color: #fff;
 }
