@@ -14,41 +14,29 @@ section
       
 </template>
 
-<script>
+<script setup>
 import { notes, noteColor, rotate, piano } from "../use/notes.js";
 import { scales } from "../use/scales.js";
 import { state, setScale, setRoot } from "../use/state.js";
 import { watchEffect, ref } from "vue";
-export default {
-  setup() {
-    const rootScale = ref([]);
-    watchEffect(() => {
-      let steps = scales[state.scale].steps;
-      let mainRoot = state.root;
-      rootScale.value = rotate(steps, -state.root);
-    });
 
-    function color(key) {
-      if (state.root == key || rootScale.value[key]) {
-        return noteColor(key);
-      } else if (piano[key]) {
-        return "#444";
-      } else {
-        return "#aaa";
-      }
-    }
+const rootScale = ref([]);
+watchEffect(() => {
+  let steps = scales[state.scale].steps;
+  let mainRoot = state.root;
+  rootScale.value = rotate(steps, -state.root);
+});
 
-    return {
-      setRoot,
-      scales,
-      notes,
-      state,
-      setScale,
-      rootScale,
-      color,
-    };
-  },
-};
+function color(key) {
+  if (state.root == key || rootScale.value[key]) {
+    return noteColor(key);
+  } else if (piano[key]) {
+    return "#444";
+  } else {
+    return "#aaa";
+  }
+}
+
 </script>
 
 <style scoped lang="postcss">

@@ -6,28 +6,19 @@ section
     
 </template>
 
-<script>
+<script setup>
 import { notes, noteColor, piano } from "../use/notes.js";
 import { state, setRoot } from "../use/state.js";
-export default {
-  setup() {
-    function color(key) {
-      if (state.root == key) {
-        return noteColor(key);
-      } else if (piano[key]) {
-        return "#444";
-      } else {
-        return "#aaa";
-      }
-    }
-    return {
-      notes,
-      state,
-      setRoot,
-      color,
-    };
-  },
-};
+
+function color(key) {
+  if (state.root == key) {
+    return noteColor(key);
+  } else if (piano[key]) {
+    return "#444";
+  } else {
+    return "#aaa";
+  }
+}
 </script>
 
 <style scoped>
@@ -40,6 +31,7 @@ section {
   width: 100%;
   font-weight: bold;
 }
+
 .note {
   background-color: #555;
   cursor: pointer;
@@ -52,6 +44,7 @@ section {
   filter: grayscale(100%);
   transition: all 300ms ease-in-out;
 }
+
 .active {
   filter: grayscale(0%);
 }

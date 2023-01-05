@@ -14,20 +14,10 @@ section.flex.items-center.justify-center.p-4
   .spacer
 </template>
 
-<script>
+<script setup>
 import { state, transport, toggleLoud } from "../use/state.js";
 import { notes } from "../use/notes.js";
-export default {
-  methods: {},
-  setup() {
-    return {
-      state,
-      notes,
-      toggleLoud,
-      ...transport,
-    };
-  },
-};
+const { play, pause } = transport
 </script>
 
 <style scoped>
