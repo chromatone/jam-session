@@ -14,6 +14,7 @@
 	"license": "MIT",
 	"author": "Davay42",
 	"module": "true",
+	"packageManager": "pnpm@9.15.3",
 	"scripts": {
 		"build": "vite build ",
 		"deploy": "sh deploy.sh",
