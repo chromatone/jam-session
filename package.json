@@ -16,9 +16,8 @@
 	"type": "module",
 	"packageManager": "pnpm@9.15.4",
 	"scripts": {
-		"build": "vite build ",
-		"deploy": "sh deploy.sh",
 		"dev": "vite --host --port 3734",
+		"build": "vite build ",
 		"serve": "vite preview --port 3700"
 	},
 	"dependencies": {
