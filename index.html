@@ -1,19 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>JAM SESSION APP by Chromatone</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
 
-	<body>
-		<div id="app"></div>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" href="/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>JAM SESSION APP by Chromatone</title>
+	<link href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap" rel="stylesheet" />
+	<script defer async src="https://stats.chromatone.center/script.js"
+		data-website-id="53f3de31-a17e-407b-a81b-a151737f0cb7"></script>
 
-		<script type="module" src="./src/main.js"></script>
-	</body>
+	<style>
+		:root {
+			--back-dark: #111;
+			--back: #333;
+			--back-light: #777;
+			--text: #eee;
+			--text-dark: #aaa;
+			--border-color: #eee;
+			--pad: 2em;
+			--button-pad: 0.5em;
+			--radius: 0;
+			--accent: #fff;
+			--accent-text: #333;
+		}
+
+		body {
+			background-color: var(--back);
+			padding: 0;
+			margin: 0;
+		}
+
+		#app {
+			font-family: 'Commissioner', Helvetica, Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-align: center;
+			color: var(--text);
+			margin: 0;
+		}
+
+		#app section {
+			@apply p-4 m-2 flex-1 rounded-sm;
+			border: 1px solid var(--border-color);
+		}
+
+		button {
+			padding: var(--button-pad);
+			font-size: 1em;
+			outline: none;
+			border: 1px solid var(--border-color);
+			background-color: transparent;
+			border-radius: var(--radius);
+			color: var(--text);
+			cursor: pointer;
+			transition: background-color 150ms ease;
+		}
+
+		button:hover {
+			background-color: var(--back-light);
+		}
+
+		button:active {
+			background-color: var(--back-dark);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app"></div>
+
+	<script type="module">
+		import { createApp } from 'vue'
+		import 'uno.css'
+		import App from './App.vue'
+
+		const app = createApp(App)
+
+		app.mount('#app')
+
+	</script>
+</body>
+
 </html>

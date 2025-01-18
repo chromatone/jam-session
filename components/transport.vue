@@ -17,7 +17,7 @@ section.flex.items-center.justify-center.p-4
 <script setup>
 import { state, transport, toggleLoud } from "../use/state.js";
 import { notes } from "../use/notes.js";
-const { play, pause } = transport
+const { play, pause, stop } = transport
 </script>
 
 <style scoped>

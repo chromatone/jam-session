@@ -4,7 +4,6 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import vue from '@vitejs/plugin-vue'
-import Pages from "vite-plugin-pages";
 import Unocss from 'unocss/vite'
 import { transformerDirectives, presetIcons, presetUno, extractorSplit } from 'unocss'
 import extractorPug from '@unocss/extractor-pug'
@@ -47,20 +46,12 @@ export default defineConfig({
       ],
     }),
     Components({
-      dirs: ['src/components'],
+      dirs: ['components'],
       extensions: ['vue'],
       directoryAsNamespace: false,
       globalNamespaces: ['global'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       exclude: [/node_modules/, /\.git/],
-    }),
-    Pages({
-      dirs: [
-        { dir: "src/pages", baseRoute: "." },
-      ],
-      routeBlockLang: 'yaml',
-      exclude: ['**/node_modules/**/*.*'],
-      extensions: ['vue'],
     }),
     // VitePWA({
     //   registerType: 'autoUpdate',
