@@ -12,6 +12,18 @@
 	"handle_links": "preferred",
 	"prefer_related_applications": false,
 	"categories": ["music", "audio", "tools"],
+	"icons": [
+		{
+			"src": "logo.png",
+			"type": "image/png",
+			"sizes": "any"
+		},
+		{
+			"src": "logo.svg",
+			"type": "image/xml+svg",
+			"sizes": "any"
+		}
+	],
 	"launch_handler": {
 		"client_mode": ["focus-existing", "auto"]
 	}

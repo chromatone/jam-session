@@ -1,9 +1,8 @@
-const CACHE_NAME = 'chromatone-jam-v.0.1.0';
+const CACHE_NAME = 'chromatone-jam-v.0.1.1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/logo.svg',
-  '102_logo.svg'
 ];
 
 // Install Service Worker

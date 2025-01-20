@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import Components from 'unplugin-vue-components/vite'
 import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import { transformerDirectives, presetIcons, presetUno, extractorSplit } from 'unocss'
@@ -28,14 +27,6 @@ export default defineConfig({
         extractorSplit,
         extractorPug()
       ]
-    }),
-    Components({
-      dirs: ['components'],
-      extensions: ['vue'],
-      directoryAsNamespace: false,
-      globalNamespaces: ['global'],
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      exclude: [/node_modules/, /\.git/],
     }),
     viteBuildScript(),
   ],
