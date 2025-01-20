@@ -1,3 +1,9 @@
+<script setup>
+import { state, transport, toggleLoud } from "../use/state.js";
+import { notes } from "../use/notes.js";
+const { play, pause, stop } = transport
+</script>
+
 <template lang="pug">
 section.flex.items-center.justify-between.p-4.gap-4
   a.flex.text-white.no-underline.items-center.gap-2(href="https://chromatone.center/" target="_blank")
@@ -16,11 +22,7 @@ section.flex.items-center.justify-between.p-4.gap-4
       .i-fa-volume-off(v-else)
 </template>
 
-<script setup>
-import { state, transport, toggleLoud } from "../use/state.js";
-import { notes } from "../use/notes.js";
-const { play, pause, stop } = transport
-</script>
+
 
 <style scoped>
 .title {

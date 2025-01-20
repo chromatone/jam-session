@@ -1,16 +1,3 @@
-<template>
-  <div
-    class="editable"
-    ref="ce"
-    @click="activate()"
-    :class="{ active: edit }"
-    :contenteditable="edit"
-    @keypress="update"
-    @blur="fix"
-    @keyup.enter="fix"
-  ></div>
-</template>
-
 <script>
 export default {
   props: {
@@ -72,10 +59,18 @@ export default {
 };
 </script>
 
+<template>
+  <div class="editable" ref="ce" @click="activate()" :class="{ active: edit }" :contenteditable="edit"
+    @keypress="update" @blur="fix" @keyup.enter="fix"></div>
+</template>
+
+
+
 <style scoped>
 .active {
   border: 4px dotted var(--border-color);
 }
+
 .editable {
   cursor: pointer;
 }

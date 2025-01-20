@@ -1,21 +1,3 @@
-<template lang="pug">
-section
-  .sig
-    .sign
-      editableNumber(:num="state.metre.over", :min="1", :max="32", @update="metre.setOver($event)").
-
-
-    .sign.under.
-
-      {{ state.metre.under }}
-
-  .cycle
-    div(:class="{ active: b == over.current.value }", v-for="b in state.metre.over", :key="b").
-
-      {{ b }}
-      
-</template>
-
 <script setup>
 import editableNumber from "./EditableNumber.vue";
 import { PluckSynth, Sequence, getDraw } from "tone";
@@ -69,6 +51,26 @@ function createRow(place) {
 }
 
 </script>
+
+<template lang="pug">
+section
+  .sig
+    .sign
+      editableNumber(:num="state.metre.over", :min="1", :max="32", @update="metre.setOver($event)").
+
+
+    .sign.under.
+
+      {{ state.metre.under }}
+
+  .cycle
+    div(:class="{ active: b == over.current.value }", v-for="b in state.metre.over", :key="b").
+
+      {{ b }}
+      
+</template>
+
+
 
 <style scoped>
 section {

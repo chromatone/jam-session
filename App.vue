@@ -4,6 +4,8 @@ import MetreBlock from './components/MetreBlock.vue'
 import TransportBlock from './components/TransportBlock.vue';
 import ScalesBlock from './components/ScalesBlock.vue';
 
+import { version } from './package.json'
+
 import { state } from "./use/state.js";
 import { noteColor } from "./use/notes.js";
 </script>
@@ -16,6 +18,10 @@ import { noteColor } from "./use/notes.js";
     BpmBlock
     MetreBlock
   ScalesBlock
+  section.flex.items-center.gap-2.justify-between(style="flex: 0 0 1em") MIT 2025
+    a.text-white.no-underline.flex.gap-1(href="https://github.com/chromatone/jam-session/" target="_blank")
+      .i-la-github
+      .p-0 {{version}}
 </template>
 
 <style>

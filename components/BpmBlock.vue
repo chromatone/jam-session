@@ -1,19 +1,3 @@
-<template lang="pug">
-section
-  .num.text-9xl.pb-8.font-bold.cursor-pointer.select-none
-    EditableNumber(:num="bpm", @update="setBPM($event)")
-  .bar
-    .adjust
-      button(@click="stepBPM(-1)")
-        .i-fa-minus
-      button(@click="stepBPM(1)")
-        .i-fa-plus
-    .info
-      .block {{ hz }}Hz
-      .block.invert(:style="{ backgroundColor: color }") {{ note }}
-    .indicator(:class="{ blink: blink }") {{ state.position }}
-</template>
-
 <script>
 
 import { setBPM } from "../use/state.js";
@@ -75,6 +59,25 @@ export default {
   },
 };
 </script>
+
+
+<template lang="pug">
+section
+  .num.text-9xl.pb-8.font-bold.cursor-pointer.select-none
+    EditableNumber(:num="bpm", @update="setBPM($event)")
+  .bar
+    .adjust
+      button(@click="stepBPM(-1)")
+        .i-fa-minus
+      button(@click="stepBPM(1)")
+        .i-fa-plus
+    .info
+      .block {{ hz }}Hz
+      .block.invert(:style="{ backgroundColor: color }") {{ note }}
+    .indicator(:class="{ blink: blink }") {{ state.position }}
+</template>
+
+
 
 <style scoped lang="postcss">
 .bar,

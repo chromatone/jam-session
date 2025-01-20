@@ -1,19 +1,3 @@
-<template lang="pug">
-section
-  .row
-    .main {{ scales[state.scale].name }}
-    .choose
-      .scale(@click="setScale(scale.handle)", :class="{ chosen: scale.handle == state.scale }", v-for="(scale, key) in scales", :key="key").
-
-        {{ scale.name }}
-
-  .notes
-    .note(:style="{ backgroundColor: color(key) }", :class="{ active: rootScale[key], main: key == state.root }", @click="setRoot(key)", v-for="(note, key) in notes", :key="key").
-
-      {{ note }}
-      
-</template>
-
 <script setup>
 import { notes, noteColor, rotate, piano } from "../use/notes.js";
 import { scales } from "../use/scales.js";
@@ -38,6 +22,24 @@ function color(key) {
 }
 
 </script>
+
+<template lang="pug">
+section
+  .row
+    .main {{ scales[state.scale].name }}
+    .choose
+      .scale(@click="setScale(scale.handle)", :class="{ chosen: scale.handle == state.scale }", v-for="(scale, key) in scales", :key="key").
+
+        {{ scale.name }}
+
+  .notes
+    .note(:style="{ backgroundColor: color(key) }", :class="{ active: rootScale[key], main: key == state.root }", @click="setRoot(key)", v-for="(note, key) in notes", :key="key").
+
+      {{ note }}
+      
+</template>
+
+
 
 <style scoped lang="postcss">
 section,
