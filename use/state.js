@@ -1,8 +1,10 @@
 import { reactive, readonly, watchEffect } from 'vue'
-import { Transport, start } from 'tone'
+import { start, getTransport } from 'tone'
 
-Transport.loop = false
-Transport.loopEnd = '8m'
+const tr = getTransport()
+
+tr.loop = false
+tr.loopEnd = '8m'
 
 const st = reactive({
   bpm: 120,
@@ -23,7 +25,7 @@ export const state = readonly(st)
 
 export function setBPM(bpm) {
   st.bpm = bpm
-  Transport.bpm.rampTo(bpm, 1)
+  tr.bpm.rampTo(bpm, 1)
 }
 
 export function setScale(scale) {
@@ -44,7 +46,7 @@ export const metre = {
 }
 
 watchEffect(() => {
-  Transport.timeSignature = [st.metre.over, st.metre.under]
+  tr.timeSignature = [st.metre.over, st.metre.under]
   st.metre.num = (st.metre.over / (st.metre.under / 4)).toFixed(2)
 })
 
@@ -52,14 +54,14 @@ export const transport = {
   play() {
     if (!st.playing) {
       st.playing = true
-      Transport.start()
+      tr.start()
       if (!st.started) {
         start()
         st.started = true
       }
       requestAnimationFrame(function progress() {
-        st.progress = Transport.progress
-        st.position = Transport.position
+        st.progress = tr.progress
+        st.position = tr.position
         if (st.playing) {
           requestAnimationFrame(progress)
         }
@@ -68,14 +70,14 @@ export const transport = {
   },
   pause() {
     if (st.playing) {
-      Transport.pause()
+      tr.pause()
       st.playing = false
     }
   },
   stop() {
     st.playing = false
-    Transport.stop()
-    st.progress = Transport.progress
+    tr.stop()
+    st.progress = tr.progress
   },
 }
 

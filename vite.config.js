@@ -1,7 +1,5 @@
 import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from "url";
 import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
 import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import { transformerDirectives, presetIcons, presetUno, extractorSplit } from 'unocss'
@@ -10,11 +8,6 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 
 export default defineConfig({
   base: './',
-  resolve: {
-    alias: {
-      "~": fileURLToPath(new URL("src", import.meta.url)),
-    },
-  },
   plugins: [
     vue(),
     viteSingleFile(),
@@ -23,27 +16,18 @@ export default defineConfig({
         transformerDirectives(),
       ],
       presets: [
-        presetIcons({ /* options */ }),
+        presetIcons({
+          cdn: 'https://esm.sh/', scale: 1.2,
+          extraProperties: {
+            "vertical-align": "middle",
+          },
+        }),
         presetUno()
       ],
       extractors: [
         extractorSplit,
         extractorPug()
       ]
-    }),
-    AutoImport({
-      // targets to transform
-      include: [
-        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue\??/, // .vue
-      ],
-      imports: [
-        'vue',
-        {
-          '@vueuse/core': ['useStorage'],
-          '@vueuse/math': ['useClamp'],
-        },
-      ],
     }),
     Components({
       dirs: ['components'],

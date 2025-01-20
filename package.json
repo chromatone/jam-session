@@ -36,18 +36,12 @@
 		"webmidi": "^3.1.12"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.297",
 		"@unocss/extractor-pug": "^65.4.2",
 		"@vitejs/plugin-vue": "^5.2.1",
 		"pug": "^3.0.3",
 		"unocss": "^65.4.2",
-		"unplugin-auto-import": "^19.0.0",
 		"unplugin-vue-components": "^28.0.0",
 		"vite": "^6.0.7",
-		"vite-aliases": "^0.11.8",
-		"vite-plugin-pages": "^0.32.4",
-		"vite-plugin-pages-sitemap": "^1.7.1",
-		"vite-plugin-pwa": "^0.21.1",
 		"vite-plugin-singlefile": "^2.1.0"
 	}
 }

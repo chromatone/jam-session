@@ -1,7 +1,7 @@
 <template lang="pug">
 section
   .num.text-9xl.pb-8.font-bold.cursor-pointer.select-none
-    editable-number(:num="bpm", @update="setBPM($event)")
+    EditableNumber(:num="bpm", @update="setBPM($event)")
   .bar
     .adjust
       button(@click="stepBPM(-1)")
@@ -15,9 +15,11 @@ section
 </template>
 
 <script>
+
 import { setBPM } from "../use/state.js";
 import { Frequency, Loop } from "tone";
 import { state } from "../use/state.js";
+import EditableNumber from "./EditableNumber.vue";
 export default {
   name: "bpm",
   data() {
@@ -42,10 +44,10 @@ export default {
       return Frequency(this.hz).toNote();
     },
     digit() {
-      return (Frequency(this.hz).toMidi() + 12 * 10 + 3) % 12;
+      return (Frequency(this.hz).toMidi() + 12 * 10 + 9) % 12;
     },
     color() {
-      return "hsla(" + this.digit * 30 + ",100%,50%, 1)";
+      return `hsla(${this.digit * 30}deg,100%,70%, 1)`;
     },
   },
   methods: {

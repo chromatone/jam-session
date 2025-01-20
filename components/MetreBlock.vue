@@ -2,7 +2,7 @@
 section
   .sig
     .sign
-      editable-number(:num="state.metre.over", :min="1", :max="32", @update="metre.setOver($event)").
+      editableNumber(:num="state.metre.over", :min="1", :max="32", @update="metre.setOver($event)").
 
 
     .sign.under.
@@ -17,8 +17,8 @@ section
 </template>
 
 <script setup>
-import editableNumber from "./editable-number.vue";
-import { Transport, PluckSynth, Sequence, Draw } from "tone";
+import editableNumber from "./EditableNumber.vue";
+import { PluckSynth, Sequence, getDraw } from "tone";
 import { reactive, ref, watchEffect } from "vue";
 import { state, metre } from "../use/state.js";
 import { notes } from "../use/notes.js";
@@ -44,7 +44,7 @@ function createRow(place) {
           );
         }
       }
-      Draw.schedule(() => {
+      getDraw().schedule(() => {
         current.value = step;
       }, time);
     },
